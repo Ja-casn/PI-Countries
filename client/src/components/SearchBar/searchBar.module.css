@@ -1,0 +1,7 @@
+.formSearch{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 30px;
+    border-radius: 4000px;
+}

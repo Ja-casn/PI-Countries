@@ -1,13 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import CountriesApp from './countriesApp';
 import reportWebVitals from './reportWebVitals';
+// Nos importamos el provider para poder asignar el store
+import {Provider} from  'react-redux'
+import mainStore from './redux/store/store'
 
 ReactDOM.render(
+  <Provider store={mainStore}>
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <CountriesApp />
+  </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 

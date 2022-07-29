@@ -1,0 +1,23 @@
+.countryCard {
+    display: flexbox;
+    margin: 20px;
+    width: 220px;
+    height: 250px;
+    background-color:blanchedalmond;
+    border-radius: 30px;
+}
+
+.imgCountry img {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 180px;
+    height: 140px;
+    text-align: center;
+    object-fit: cover;
+    border-radius: 30px;
+    margin-top: 10px;
+}
+
+.pagraph{
+    color: black;
+}

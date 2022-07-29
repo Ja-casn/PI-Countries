@@ -1,0 +1,21 @@
+
+.cardDesign{
+    display: inline-flex;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+    padding-top: 60px;
+}
+
+.btReload{
+    margin: 10px 15px;
+
+}
+
+.filter{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    text-align: center;
+    height: 28px;
+}

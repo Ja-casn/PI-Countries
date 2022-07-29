@@ -1,0 +1,31 @@
+import React from "react";
+import styles from './pagination.module.css'
+
+export default function Pagination({currentPage, setCurrentPage, countriesPerPage, countries, paginated }) {
+  let pageNumber = [];
+
+  let maxPages = 1 + Math.ceil((countries - 9) / countriesPerPage)
+
+  for (let i = 1; i <= maxPages; i++) {
+    pageNumber.push(i);
+  }
+
+  const prevClick = () => {
+    setCurrentPage(currentPage - 1)
+  }
+
+  const nextClick = () => {
+    setCurrentPage(currentPage + 1)
+  }
+  return (
+      <div className={styles.paginated}>
+        <button disabled={currentPage <= 1} onClick={prevClick} >Prev</button>
+
+        {pageNumber?.map((number) => (
+          <button key={number} onClick={() => paginated(number)}>{number}</button>
+        ))}
+
+      <button disabled={currentPage >= maxPages} onClick={nextClick} >Next</button>
+      </div>
+  );
+}

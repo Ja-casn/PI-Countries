@@ -1,21 +1,76 @@
-
-.cardDesign{
+.cardDesign {
     display: inline-flex;
     justify-content: center;
     text-align: center;
     flex-wrap: wrap;
-    padding-top: 60px;
+    padding-top: 30px;
+    
 }
-
-.btReload{
-    margin: 10px 15px;
-
-}
-
-.filter{
+.ordFilter{
     display: flex;
     justify-content: center;
-    margin: 10px;
-    text-align: center;
-    height: 28px;
+}
+
+.btnReload{
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    will-change: box-shadow, transform;
+    background: radial-gradient(100% 100% at 100% 0%, #303638 0%, #0c1136 100%);
+    box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
+    padding: 0 32px;
+    border-radius: 6px;
+    color: #fff;
+    height: 48px;
+    font-size: 15px;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+    margin: 5px 10px 0px 10px;
+}
+
+.btnReload:hover {
+    box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #bebfc9;
+    transform: translateY(-2px);
+}
+
+.btnReload:active {
+    box-shadow: inset 0px 3px 7px #3c4fe0;
+    transform: translateY(2px);
+}
+
+.filter {
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    will-change: box-shadow, transform;
+    background: radial-gradient(100% 100% at 100% 0%, #303638 0%, #0c1136 100%);
+    box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
+    padding: 0 26px;
+    border-radius: 6px;
+    color: #fff;
+    height: 48px;
+    font-size: 15px;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+    margin: 0px 10px 0px 10px;
+
+
+}
+
+.filter:hover {
+    box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #bebfc9;
+    transform: translateY(-2px);
+}
+
+.filter:active {
+    box-shadow: inset 0px 3px 7px #3c4fe0;
+    transform: translateY(2px);
+}
+
+.mainButtons{
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 60px 0px 60px;
 }

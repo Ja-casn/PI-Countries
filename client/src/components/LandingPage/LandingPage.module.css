@@ -6,25 +6,14 @@
 }
 
 
-.h1 {
-    color: #2c3e50
+.pTitle {
+    color: #1f2c3a;
+    font-size: 45px;
+    margin-bottom: 20px;
 }
 
-.button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border: 1px solid transparent;
-    border-radius: 2px;
-    height: 40px;
-    font-size: 20px;
-    color: #360819;
-    /* background-color: #360819; */
-    transition: background-color 0.2s ease-in-out 0s, opacity 0.2s ease-in-out 0s;
-}
-
-.button:hover {
-    color: #241c15;
-    background-color: #d9d7cd;
+.content{
+    margin-top: 9px;
+    color:white;
+    font-size: 25px;
 }

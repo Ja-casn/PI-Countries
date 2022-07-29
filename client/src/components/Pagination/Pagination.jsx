@@ -1,5 +1,6 @@
 import React from "react";
 import styles from './pagination.module.css'
+import buttonStyle from '../Home/Home.module.css'
 
 export default function Pagination({currentPage, setCurrentPage, countriesPerPage, countries, paginated }) {
   let pageNumber = [];
@@ -19,13 +20,13 @@ export default function Pagination({currentPage, setCurrentPage, countriesPerPag
   }
   return (
       <div className={styles.paginated}>
-        <button disabled={currentPage <= 1} onClick={prevClick} >Prev</button>
+        <button className={styles.btnClick} disabled={currentPage <= 1} onClick={prevClick} >Prev</button>
 
         {pageNumber?.map((number) => (
-          <button key={number} onClick={() => paginated(number)}>{number}</button>
+          <button className={styles.btnStyle} key={number} onClick={() => paginated(number)}>{number}</button>
         ))}
 
-      <button disabled={currentPage >= maxPages} onClick={nextClick} >Next</button>
+      <button className={styles.btnClick} disabled={currentPage >= maxPages} onClick={nextClick} >Next</button>
       </div>
   );
 }

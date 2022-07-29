@@ -1,22 +1,23 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getContinent } from "../../react/actions/actions";
+import styles from '../Home/Home.module.css'
 
 const Continent = () => {
   const countries = useSelector((state) => state.countries);
-  const allContinents = countries.map((el) => el.continent);
-  // const allContinents = [
-  //   "Asia",
-  //   "South America",
-  //   "North America",
-  //   "Africa",
-  //   "Antarctica",
-  //   "Europe",
-  //   "Oceania",
-  // ];
-  const fixSetContinent = new Set(allContinents); // saca repetidos
+  // const allContinents = countries.map((el) => el.continent);
+  const allContinents = [
+    "Asia",
+    "South America",
+    "North America",
+    "Africa",
+    "Antarctica",
+    "Europe",
+    "Oceania",
+  ];
+  // const fixSetContinent = new Set(allContinents); // saca repetidos
 
-  const setToArray = [...fixSetContinent];
+  // const setToArray = [...fixSetContinent];
 
   const dispatch = useDispatch();
 
@@ -26,10 +27,10 @@ const Continent = () => {
   };
 
   return (
-    <div className="select-continent">
-      <select onChange={(e) => handleClickFilter(e)}>
+    <div>
+      <select className={styles.filter} onChange={(e) => handleClickFilter(e)}>
       <option value="all">Continents</option>
-        {setToArray.map((el, i) => (
+        {allContinents.map((el, i) => (
           <option value={el} key={i}>
             {el}
           </option>

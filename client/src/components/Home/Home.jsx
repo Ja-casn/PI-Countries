@@ -11,6 +11,7 @@ import CountryCard from "../Country-Card/CountryCard";
 import Pagination from "../Pagination/Pagination";
 import styles from "./Home.module.css";
 import SearchBar from "../SearchBar/SearchBar";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const countries = useSelector((state) => state.countries);
@@ -58,37 +59,45 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.btReload}>
+      <div className={styles.mainButtons}>
         <button
+          className={styles.btnReload}
           onClick={(e) => {
             handleReload(e);
           }}
         >
           Reload countries
         </button>
+        <Link to='/activities'>
+          <button className={styles.btnReload}>Create Activity</button>
+        </Link>
       </div>
 
       {/* <Activity /> */}
 
-      <div className={styles.filter}>
-        <select onChange={(e) => handleSortCountry(e)}>
-          <option defaultValue="">Alphabetic Name</option>
-          <option value="asc">Ascendent</option>
-          <option value="desc">Descendent</option>
+      <div className={styles.ordFilter}>
+        <select
+          className={styles.filter}
+          onChange={(e) => handleSortCountry(e)}
+        >
+          <option defaultValue=''>Alphabetic Name</option>
+          <option value='asc'>Ascendent</option>
+          <option value='desc'>Descendent</option>
         </select>
 
-        <select onChange={(e) => handleSortPopulation(e)}>
-          <option defaultValue="">Poblacion</option>
-          <option value="asc">Ascendente</option>
-          <option value="desc">Descendente</option>
+        <select
+          className={styles.filter}
+          onChange={(e) => handleSortPopulation(e)}
+        >
+          <option defaultValue=''>Poblacion</option>
+          <option value='asc'>Ascendente</option>
+          <option value='desc'>Descendente</option>
         </select>
+
+        <Continent />
       </div>
 
-      {/* <div className="Continent">
-        <Continent />
-      </div> */}
-      <Nav />
-      <SearchBar  setCurrentPage={setCurrentPage} />
+      <SearchBar setCurrentPage={setCurrentPage} />
 
       <div className={styles.cardDesign}>
         {currentCountry.map((el) => {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getCountryQuery } from "../../react/actions/actions";
-import styles from './searchBar.module.css'
+import styles from "./searchBar.module.css";
 
 const SearchBar = ({ setCurrentPage }) => {
   const dispatch = useDispatch();
@@ -21,8 +21,9 @@ const SearchBar = ({ setCurrentPage }) => {
 
   return (
     <div>
-      <form className={styles.formSearch} onSubmit={(e) => handleOnSubmit(e)}>
+      <form className={styles.formSearchBar} onSubmit={(e) => handleOnSubmit(e)}>
         <input
+          className={styles.searchBar}
           type="text"
           placeholder="Search country"
           onChange={(e) => {
@@ -31,7 +32,7 @@ const SearchBar = ({ setCurrentPage }) => {
           value={countryName}
         />
 
-        <button type="submit" onClick={(e) => handleOnSubmit(e)}>
+        <button className={styles.searchBar} type="submit" onClick={(e) => handleOnSubmit(e)}>
           Search
         </button>
       </form>

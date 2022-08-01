@@ -105,7 +105,8 @@ const CreateActivity = () => {
           season: myForm.season,
           countries: myForm.countries,
         })
-      );
+      )
+      history.push('/countries')
       alert("Your activity has created");
     }
   };
@@ -149,7 +150,7 @@ const CreateActivity = () => {
           key="2"
           name="difficulty"
           type="range"
-          min="0"
+          min="1"
           max="5"
           value={myForm.difficulty}
           placeholder="Difficulty"

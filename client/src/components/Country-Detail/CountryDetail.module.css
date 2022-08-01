@@ -37,10 +37,8 @@
 
 .activityDetail{
     display: flex;
-    justify-content: center;
-    align-items: center;
     height: 250px;
-    width: 400px;
+    width: auto;
     background: radial-gradient(100% 100% at 100% 0%, #303638 0%, #0c113689 100%);
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
@@ -69,7 +67,6 @@
     font-size: 15px;
     text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
     transition: box-shadow 0.15s ease, transform 0.15s ease;
-    /* margin: 15px 0px 0px 15px; */
 }
 
 .btnReload:hover {
@@ -84,8 +81,9 @@
 
 .actContainer{
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+    margin-right: 12px;
     /* border: 1px solid greenyellow; */
-    margin-right: 8px;
     
 }

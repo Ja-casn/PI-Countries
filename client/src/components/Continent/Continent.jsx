@@ -4,21 +4,6 @@ import { getContinent } from "../../react/actions/actions";
 import styles from '../Home/Home.module.css'
 
 const Continent = () => {
-  const countries = useSelector((state) => state.countries);
-  // const allContinents = countries.map((el) => el.continent);
-  const allContinents = [
-    "Asia",
-    "South America",
-    "North America",
-    "Africa",
-    "Antarctica",
-    "Europe",
-    "Oceania",
-  ];
-  // const fixSetContinent = new Set(allContinents); // saca repetidos
-
-  // const setToArray = [...fixSetContinent];
-
   const dispatch = useDispatch();
 
   const handleClickFilter = (e) => {
@@ -30,11 +15,14 @@ const Continent = () => {
     <div>
       <select className={styles.filter} onChange={(e) => handleClickFilter(e)}>
       <option value="all">Continents</option>
-        {allContinents.map((el, i) => (
-          <option value={el} key={i}>
-            {el}
-          </option>
-        ))}
+      <option value="South America">South America</option>
+      <option value="North America">North America</option>
+      <option value="Africa">Africa</option>
+      <option value="Asia">Asia</option>
+      <option value="Europe">Europe</option>
+      <option value="Oceania">Oceania</option>
+      <option value="Antartica">Antartica</option>
+      
       </select>
     </div>
   );

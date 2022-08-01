@@ -6,12 +6,12 @@ import {
   orderByPopulation,
 } from "../../react/actions/actions";
 import Continent from "../Continent/Continent";
-import Nav from "../Nav/Nav";
 import CountryCard from "../Country-Card/CountryCard";
 import Pagination from "../Pagination/Pagination";
 import styles from "./Home.module.css";
 import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
+import AllActivities from "../Activity/Activity";
 
 const Home = () => {
   const countries = useSelector((state) => state.countries);
@@ -27,6 +27,7 @@ const Home = () => {
     indexOfFirstCountry,
     indexOfLastCountry
   );
+
   const [, setOrden] = useState("");
 
   const paginated = (pageNumber) => {
@@ -41,20 +42,33 @@ const Home = () => {
   const handleReload = (e) => {
     e.preventDefault();
     dispatch(getAllCountries());
+    setCurrentPage(1);
   };
 
   const handleSortCountry = (e) => {
     e.preventDefault();
-    // e.setCurrentPage(1)
-    dispatch(orderByName(e.target.value));
-    setOrden(`order ${e.target.value}`);
+    if (e.target.value === "all") {
+      dispatch(getAllCountries());
+      setCurrentPage(1);
+      setOrden(e.target.value);
+    } else {
+      dispatch(orderByName(e.target.value));
+      setCurrentPage(1);
+      setOrden(e.target.value);
+    }
   };
 
   const handleSortPopulation = (e) => {
     e.preventDefault();
-    // e.setCurrentPage(1)
-    dispatch(orderByPopulation(e.target.value));
-    setOrden(`order ${e.target.value}`);
+    if (e.target.value === "all") {
+      dispatch(getAllCountries());
+      setCurrentPage(1);
+      setOrden(e.target.value);
+    } else {
+      dispatch(orderByPopulation(e.target.value));
+      setCurrentPage(1);
+      setOrden(e.target.value);
+    }
   };
 
   return (
@@ -68,33 +82,33 @@ const Home = () => {
         >
           Reload countries
         </button>
-        <Link to='/activities'>
+        <Link to="/activities">
           <button className={styles.btnReload}>Create Activity</button>
         </Link>
       </div>
-
-      {/* <Activity /> */}
 
       <div className={styles.ordFilter}>
         <select
           className={styles.filter}
           onChange={(e) => handleSortCountry(e)}
         >
-          <option defaultValue=''>Alphabetic Name</option>
-          <option value='asc'>Ascendent</option>
-          <option value='desc'>Descendent</option>
+          <option value="all">Alphabetic Name</option>
+          <option value="asc">A-Z</option>
+          <option value="desc">Z-A</option>
         </select>
 
         <select
           className={styles.filter}
           onChange={(e) => handleSortPopulation(e)}
         >
-          <option defaultValue=''>Poblacion</option>
-          <option value='asc'>Ascendente</option>
-          <option value='desc'>Descendente</option>
+          <option value="all">Poblacion</option>
+          <option value="asc">Population A-Z</option>
+          <option value="desc">Population Z-A</option>
         </select>
 
         <Continent />
+
+        <AllActivities />
       </div>
 
       <SearchBar setCurrentPage={setCurrentPage} />
@@ -103,7 +117,7 @@ const Home = () => {
         {currentCountry.map((el) => {
           return (
             <CountryCard
-              className={styles.cardDesign}
+              // className={styles.cardDesign}
               key={el.id}
               id={el.id}
               flag={el.flag}

@@ -1,4 +1,4 @@
-import { GET_COUNTRIES_DETAIL, GET_ACTIVITIES, GET_ALLCOUNTRIES, GET_CONTINENT, GET_COUNTRY_QUERY, LOCALHOST, FILTER_ACTIVITY, ORDER_BY_NAME, ORDER_BY_POPULATION } from '../actions-types/actionsTypes';
+import { GET_COUNTRIES_DETAIL, GET_ACTIVITIES, GET_ALLCOUNTRIES, GET_CONTINENT, GET_COUNTRY_QUERY, LOCALHOST, FILTER_ACTIVITY, ORDER_BY_NAME, ORDER_BY_POPULATION, CREATE_ACTIVITY } from '../actions-types/actionsTypes';
 import axios from 'axios';
 
 export const getAllCountries = () => async (dispatch) => {
@@ -6,17 +6,14 @@ export const getAllCountries = () => async (dispatch) => {
     dispatch({ type: GET_ALLCOUNTRIES, payload: response.data })
 }
 
-export const getAllActivities = () => async (dispatch) => {
-    const response = await axios.get('http://localhost:3001/activities')
-    dispatch({ type: GET_ACTIVITIES, payload: response.data })
-}
-
 export const getCountryQuery = (name) => async (dispatch) => {
     try {
         const response = await axios.get(`${LOCALHOST}/countries?name=${name}`)
         dispatch({ type: GET_COUNTRY_QUERY, payload: response.data })
     } catch (error) {
-        console.log(error)
+        if(error.response){
+            alert(error.response.data)
+        }
     }
 }
 
@@ -54,22 +51,31 @@ export const orderByPopulation = (payload) => {
 
 export const filterByActivity = (payload) => async (dispatch) => {
     const response = await axios.get('http://localhost:3001/countries')
-    dispatch({ type: FILTER_ACTIVITY, payload: response.data })
-    // const response2 = await response.data.filter((e) => {
-    //     e.TouristActivities.filter((el) => el.name === payload).length
-    // })
-    // console.log(response2)
-    // dispatch({ type: FILTER_ACTIVITY, payload: response2 })
+
+    console.log(payload)
+
+    if (payload === 'All') {
+        dispatch({ type: FILTER_ACTIVITY, payload: response.data })
+    }
+    const response2 = await response.data.filter((e) => (
+        e.touristActivities.filter((el) => el.name === payload).length
+    )
+    )
+
+    console.log(response2)
+    dispatch({ type: FILTER_ACTIVITY, payload: response2 })
+
+
 }
 
+export const getAllActivities = () => async (dispatch) => {
+    const response = await axios.get('http://localhost:3001/activities')
+    dispatch({ type: GET_ACTIVITIES, payload: response.data })
+}
 
-export const postActivity = (name, difficulty, duration, season, countries) => async () => {
-    const response = await axios.post('http://localhost:3001/activities', {
-        name,
-        difficulty,
-        duration,
-        season,
-        countries
-    })
-    return response;
+export const postActivity = (values) => async (dispatch) => {
+    try {
+     const response = await axios.post(`${LOCALHOST}/activities`, values)  
+     dispatch({type: CREATE_ACTIVITY, payload: response.data}) 
+    } catch (error) {}
 }

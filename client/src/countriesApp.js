@@ -14,7 +14,7 @@ const CountriesApp = () => {
       <div className="mainDiv">
         <Route exact path='/' component={LandingPage}/>
         <Route exact path='/countries' component={Home} />
-        <Route exact path='/countries/:idCountry' component={CountryDetail} />
+        <Route path='/countries/:idCountry' component={CountryDetail} />
         <Route exact path='/activities' component={CreateActivity} />
       </div>
     </BrowserRouter>

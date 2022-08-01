@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import styles from "../Home/Home.module.css";
 import {
   filterByActivity,
   getAllActivities,
@@ -7,18 +8,20 @@ import {
 } from "../../react/actions/actions";
 
 
-const Activity = () => {
-  const countries = useSelector((state) => state.countries);
+
+const AllActivities = () => {
+  const totalCountries = useSelector((state) => state.countries);
 
   let valueActivity = [];
 
-  countries.map(
+  totalCountries.map(
     (data) =>
-      data.TouristActivity &&
-      data.TouristActivity.map(
+      data.touristActivities?.map(
         (activity) => activity.name && valueActivity.push(activity.name) //aca pusheo todas las actividades
       )
   );
+
+  // console.log(valueActivity);
 
   let uniqueAct = valueActivity.filter(function (act, index, array) {
     //aca los creo sin repetidos
@@ -36,17 +39,15 @@ const Activity = () => {
     dispatch(filterByActivity(e.target.value));
   };
 
-  useEffect(() => {
-    dispatch(getAllActivities());
-  }, [dispatch]);
+
 
   return (
     <div>
-      <select onChange={(e) => handleOnChange(e)}>
+      <select className={styles.filter} onChange={(e) => handleOnChange(e)}>
         <option value="All">All activities</option>
-        {uniqueAct.map((act, index) => {
+        {uniqueAct.map((act, i) => {
           return (
-            <option key={index} value={act.name}>
+            <option value={act.name} key={i}>
               {act}
             </option>
           );
@@ -56,4 +57,4 @@ const Activity = () => {
   );
 };
 
-export default Activity;
+export default AllActivities;

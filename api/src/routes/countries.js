@@ -39,9 +39,9 @@ router.get('/', async (req, res, next) => {
             if (countryQuery.length === 0) {
                 return res
                     .status(404)
-                    .send({
-                        error: `there is no country with name , ${name}`,
-                    });
+                    .send(
+                        `there is no country with name ---> ${name}`,
+                    );
             }
             // /countries
             return res.send(countryQuery);

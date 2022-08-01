@@ -3,37 +3,16 @@ const { Country, TouristActivity } = require('../db');
 const router = Router();
 
 router.get('/', async (req, res, next) => {
-    const {name} = req.query;
-    try { 
-        if(name){
-            const activity = await Country.findAll({include:TouristActivity})
-            const activityFilter = await activity.filter((e) => {
-                for (let a = 0; a < e.activities.length ; a++) {
-                    if(e.activities[a].name === name){
-                        return true
-                    }
-                }
-            })
-
-            if(activityFilter.length){
-                res.status(202).json(activityFilter)
-            }else{
-                res.status(202).send("Are not activities")
-            }
-            
-        }else{
-            const activityDb = await TouristActivity.findAll({})
-            res.status(202).json(activityDb)
-        }
-        
-    } catch (error) {
-        return res.status(404).send("Doesn't exist activities")
+    const allActivities = await TouristActivity.findAll({
+        include: Country
     }
-    
+    );
+    res.send(allActivities);
+
 })
 
 router.post('/', async (req, res, next) => {
-    const { name, difficulty, duration, season, countries } = req.body;
+    let { name, difficulty, duration, season, countries } = req.body;
     const newActivity = { name, difficulty, duration, season };
 
     // si el nombre existe ya en TouristActivity, entonces, guardame el nombre en una constante, y luego al momento de crear una nueva actividad le voy a pasar como name, dicha constante.
@@ -45,15 +24,12 @@ router.post('/', async (req, res, next) => {
 
     try {
         const createActivity = await TouristActivity.create(newActivity)
-        let bringCountry = await Country.findAll({
-            where: {
-                name: countries
-            }
-        })
-    
-        await createActivity.addCountry(bringCountry)
-        res.status(201).send('You have create a new activity')
-        
+
+        let bringCountry = await Country.findAll({ where: { name: countries } })
+
+        createActivity.addCountry(bringCountry)
+        return res.status(201).send('You have create a new activity')
+
     } catch (error) {
         next(error)
     }

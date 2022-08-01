@@ -20,13 +20,13 @@ export default function Pagination({currentPage, setCurrentPage, countriesPerPag
   }
   return (
       <div className={styles.paginated}>
-        <button className={styles.btnClick} disabled={currentPage <= 1} onClick={prevClick} >Prev</button>
-
+        <button style={{color: "white", backgroundImage: "linear-gradient(100% 100% at 100% 0%, #303638 0%, #0c113689 100%)", borderRadius: "10px"}} disabled={currentPage <= 1} onClick={prevClick} >Prev</button>
+        
         {pageNumber?.map((number) => (
           <button className={styles.btnStyle} key={number} onClick={() => paginated(number)}>{number}</button>
         ))}
 
-      <button className={styles.btnClick} disabled={currentPage >= maxPages} onClick={nextClick} >Next</button>
+      <button style={{color: "white", backgroundImage: "radial-gradient(100% 100% at 100% 0%, #303638 0%, #0c113689 100%)", borderRadius: "10px"}} disabled={currentPage >= maxPages} onClick={nextClick} >Next</button>
       </div>
   );
 }

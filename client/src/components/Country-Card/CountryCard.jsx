@@ -5,6 +5,7 @@ import styles from "./CountryCard.module.css";
 const CountryCard = ({ flag, name, continent, id }) => {
   return (
     <div className={styles.countryCard}>
+      
       <Link to={`/countries/${id}`}>
         <div className={styles.imgCountry}>
           <img src={flag} alt={id} />

@@ -7,6 +7,7 @@ const initialState = {
     countries: [],
     countriesCopy: [],
     activities: [],
+    activityDetail: {},
     countryDetail: {},
 
 }
@@ -37,12 +38,6 @@ const mainReducer = (state = initialState, action) => {
                 ...state,
                 countries: filterContinent
             }
-        case CREATE_ACTIVITY:
-            return {
-                ...state,
-                activities: [...state.countries, action.payload]
-            }
-
         case ORDER_BY_NAME:
             const orderByName = action.payload === 'asc' ? state.countries.sort((a, b) => {
                 if (a.name < b.name) {
@@ -50,7 +45,7 @@ const mainReducer = (state = initialState, action) => {
                 }
                 if (a.name > b.name) {
                     return 1
-                } 
+                }
                 return 0
             })
                 : state.countries.sort((a, b) => {
@@ -80,6 +75,12 @@ const mainReducer = (state = initialState, action) => {
             return {
                 ...state,
                 countries: orderByPopulation
+            }
+
+        case CREATE_ACTIVITY:
+            return {
+                ...state,
+                activityDetail: action.payload
             }
 
         case GET_ACTIVITIES:

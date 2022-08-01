@@ -1,31 +1,25 @@
-h1{
+.mainContainerAct {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    overflow: visible;
+    background-image: url('../../utilities/img/worldCountries.png');
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+
 }
 
 .inputs {
     display: flex;
     align-items: center;
     flex-direction: column;
-    font-size: 20px;
-    border-radius: 20px;
-    margin-left: 290px;
-    width: 70%;
-    height: 70vh;
-    background: radial-gradient(100% 100% at 100% 0%, #375058 0%, #444c6a9f 100%);
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-}
-
-.addRemove {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* flex-direction: column; */
-    margin: 0px 10px 0px 10px;
-}
-
-.nameCountry {
-    margin: 0px 10px 0px 15px;
+    border-radius: 5px;
+    background: radial-gradient(100% 100% at 100% 0%, #303638a3 0%, #0c113610 100%);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    width: 800px;
+    height: auto;
+    margin-top: 60px;
 }
 
 .inputsActivity {
@@ -34,18 +28,155 @@ h1{
     background: radial-gradient(100% 100% at 100% 0%, #303638 0%, #0c1136 100%);
     box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
     border-radius: 6px;
-    width: 150px;
     color: #fff;
     height: 30px;
     font-size: 15px;
     text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
     transition: box-shadow 0.15s ease, transform 0.15s ease;
+    width: 200px;
 }
 
-.errors{
-    font-size: 18px;
-    width: 300px;
-    margin-left: 480px;
-    margin-top: -30px;
+/* Manage name and error name */
+/* ---------------------------------------------------------------------- */
+.labelName {
+    margin-bottom: 8px;
+    margin-top: 10px;
+    width: 200px;
     color: white;
+
+}
+
+.errorsName {
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 10px;
+    color: #1fb2ca;
+}
+
+/* Manage difficulty and error difficulty */
+/* ---------------------------------------------------------------------- */
+.labelDifficulty {
+    margin-bottom: 8px;
+    margin-top: 10px;
+    width: 200px;
+    color: white
+}
+
+.errorsDifficulty {
+    position: absolute;
+    margin-bottom: 150px;
+    margin-left: 100px;
+    margin-top: 83px;
+    color: #1fb2ca;
+}
+
+/* Manage duration and error duration */
+/* ---------------------------------------------------------------------- */
+.labelDuration {
+    margin-bottom: 8px;
+    margin-top: 10px;
+    width: 200px;
+    color: white;
+}
+
+.errorsDuration {
+    position: absolute;
+    margin-left: 110px;
+    margin-top: 155px;
+    color: #1fb2ca;
+}
+
+/* Manage season and error season */
+/* ---------------------------------------------------------------------- */
+.labelSeason {
+    margin-bottom: 8px;
+    margin-top: 10px;
+    width: 200px;
+    color: white
+}
+
+.errorsSeason {
+    position: absolute;
+    margin-left: 100px;
+    margin-top: 225px;
+    color: #1fb2ca;
+}
+/* ---------------------------------------------------------------------- */
+
+/* Manage countries and error countries */
+/* ---------------------------------------------------------------------- */
+.labelCountries {
+    margin-bottom: 5px;
+    margin-top: 10px;
+    width: 200px;
+    color: white
+}
+
+.submitBtn{
+    position: absolute;
+    margin-left: 270px;
+    margin-top: 320px;
+}
+/* ---------------------------------------------------------------------- */
+
+
+.nameCountry{
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    /* border: 1px solid red; */
+}
+
+.orderCountry{
+    /* border: 1px solid white; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120px;
+    color: white;
+    margin: 0px 10px 10px 10px;
+    border-radius: 10px;
+    background: radial-gradient(100% 100% at 100% 0%, #303638e7 0%, #0c1136d3 100%);
+}
+
+.borderCountry{
+
+    border: 6px;
+}
+
+h1{
+    display: flex;
+    color: #1f2c3a;
+    /* margin-top: 10px; */
+}
+
+/* ---------------------------------------------------------------------- */
+.btnReload{
+    position: absolute;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    will-change: box-shadow, transform;
+    background: radial-gradient(100% 100% at 100% 0%, #303638 0%, #0c113689 100%);
+    box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
+    border-radius: 6px;
+    margin-top: 30px;
+    margin-right: 1250px;
+    color: #fff;
+    height: 48px;
+    font-size: 15px;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+
+.removeBtn{
+    color: white;
+    background: radial-gradient(100% 100% at 100% 0%, #303638 0%, #61626c89 100%);
+    height: 25px;
+    width: 35px;
+    font-size: 12px;
+    border-radius: 5px;
 }

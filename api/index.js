@@ -24,11 +24,12 @@ const getInfoApi = require('./src/controllers/apiCountryInfo')
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
-  getInfoApi().then(() => {
-    server.listen(3001, () => {
-      console.log('%s listening at 3001'); // eslint-disable-line no-console
-    });
-  })
+
+  server.listen(3001, () => {
+    getInfoApi()
+    console.log('%s listening at 3001'); // eslint-disable-line no-console
+  });
+
 })
 
 

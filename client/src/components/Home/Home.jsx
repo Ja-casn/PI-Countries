@@ -18,7 +18,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [countriesPerPage, setCountriesPerPage] = useState(10);
+  const [countriesPerPage,] = useState(10);
   const indexOfLastCountry =
     currentPage === 1 ? 9 : currentPage * countriesPerPage - 1; // 10
   const indexOfFirstCountry =

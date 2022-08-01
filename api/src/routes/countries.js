@@ -29,13 +29,6 @@ router.get('/', async (req, res, next) => {
                 },
                 include: TouristActivity
             });
-
-            // const countryQuery = await getDbInfo();
-
-            // console.log(countryQuery)
-
-            // let includname = countryQuery.filter((el) => el.name.toLowerCase().startsWith(name.toLowerCase()))
-
             if (countryQuery.length === 0) {
                 return res
                     .status(404)
@@ -43,14 +36,7 @@ router.get('/', async (req, res, next) => {
                         `there is no country with name ---> ${name}`,
                     );
             }
-            // /countries
             return res.send(countryQuery);
-
-            /*
-            En el if de la linea 36, verificamos si nuestra constante countryQuery es igual a 0, es decir que no tiene informacion, si es asi, entonces retornamos un status 404 y un mensaje de error. 
-
-            Si countryQuery tiene informacion, es decir que si existe un pais que corresponda a los de nuestra info, retornamos dicha informacion del pais.
-            */
         }
     } catch (error) {
         next(error);

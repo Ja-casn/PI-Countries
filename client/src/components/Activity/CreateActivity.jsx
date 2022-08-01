@@ -1,25 +1,19 @@
 import React, { useEffect, useState } from "react";
 // import { connect } from 'react-redux'
-import {
-  getAllActivities,
-  getAllCountries,
-  postActivity,
-} from "../../react/actions/actions";
+import { getAllActivities, postActivity } from "../../react/actions/actions";
 import styles from "./createActivity.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import btn from "../Home/Home.module.css";
 
 function validate(myForm) {
   let errors = {};
 
   if (isNaN(myForm.name) !== true || !myForm.name || /\s/g.test(myForm.name)) {
     // name es requerido y no acepta espacios en blancos.
-    errors.name =
-      "The name of the activity is required, numbers and spaces are not allowed";
+    errors.name = "Only letters";
   } else if (!/^[a-zA-Z0-9& áéíóú]+$/.test(myForm.name)) {
     // no permiten que hayan caracteres especiales
-    errors.name = "Activity name is invalid, no special characters are allowed"; // -> "/[$%&|<>#]/" valida caracteres especiales
+    errors.name = "No special characters are allowed"; // -> "/[$%&|<>#]/" valida caracteres especiales
   }
 
   if (!myForm.duration) {
@@ -28,25 +22,23 @@ function validate(myForm) {
   }
 
   if (!myForm.difficulty) {
-    errors.difficulty = "Difficulty is required, please choose one option";
+    errors.difficulty = "Choose one option";
   }
 
   if (!myForm.season) {
-    errors.season = "Season is required, please choose one option";
+    errors.season = "Choose one option";
   }
 
   if (myForm.countries.length < 1) {
-    errors.countryId =
-      "At least one country is required, please choose from the list";
+    errors.countryId = "Choose at least one from the list";
   }
 
   return errors;
 }
 
-const CreateActivity = (props) => {
+const CreateActivity = () => {
   const totalCountries = useSelector((state) => state.countries);
   const [errors, setErrors] = useState({});
-  const [created, setCreated] = useState({ created: false, error: false });
   const [myForm, setMyForm] = useState({
     name: "",
     difficulty: "",
@@ -62,7 +54,7 @@ const CreateActivity = (props) => {
     dispatch(getAllActivities());
   }, [dispatch, myForm]);
 
-  console.log(totalCountries);
+  // console.log(totalCountries);
 
   const handleChange = (e) => {
     // console.log(e.target.value)
@@ -105,17 +97,15 @@ const CreateActivity = (props) => {
     ) {
       alert("There is missing a field");
     } else {
-      {
-        dispatch(
-          postActivity({
-            name: myForm.name,
-            difficulty: parseInt(myForm.difficulty),
-            duration: parseInt(myForm.duration),
-            season: myForm.season,
-            countries: myForm.countries,
-          })
-        );
-      }
+      dispatch(
+        postActivity({
+          name: myForm.name,
+          difficulty: parseInt(myForm.difficulty),
+          duration: parseInt(myForm.duration),
+          season: myForm.season,
+          countries: myForm.countries,
+        })
+      );
       alert("Your activity has created");
     }
   };
@@ -128,125 +118,138 @@ const CreateActivity = (props) => {
       }),
     });
   };
+
   return (
-    <div>
-      <button className={btn.btnReload} onClick={() => history.goBack()}>
+    <div className={styles.mainContainerAct}>
+      <button className={styles.btnReload} onClick={() => history.goBack()}>
         Back to countries
       </button>
-      <div>
-        <div>
-          <h1>Create Activity</h1>
-          <form className={styles.inputs} onSubmit={handleSubmit}>
-            <h4>Name:</h4>
-            <input
-              className={styles.inputsActivity}
-              key="1"
-              name="name"
-              type="text"
-              placeholder="Name"
-              value={myForm.name}
-              onChange={handleChange}
-            />
-            <span className={styles.errors}>{errors.name && <span>{errors.name}</span>}</span>
-            <h4>Difficulty: {myForm.difficulty}</h4>
-            <input
-              className={styles.inputsActivity}
-              key="2"
-              name="difficulty"
-              type="range"
-              min="0"
-              max="5"
-              value={myForm.difficulty}
-              placeholder="Difficulty"
-              onChange={handleChange}
-            >
-              </input>
-            <span className={styles.errors}>{!errors.difficulty ? null : <span>{errors.difficulty}</span>}</span>
-            <h4>Duration:</h4>
-            <input
-              className={styles.inputsActivity}
-              key="3"
-              name="duration"
-              type="time"
-              value={myForm.duration}
-              placeholder="Duration"
-              onChange={handleChange}
-            />
-            <span className={styles.errors}>{!errors.duration ? null : <span>{errors.duration}</span>}</span>
-            <h4>Season:</h4>
-            <select
-              className={styles.inputsActivity}
-              key="4"
-              name="season"
-              onChange={handleChange}
-              value={myForm.season}
-            >
-              <option key="defaultValue" value="Season">
-                Season
-              </option>
-              <option key="value1" value="Spring">
-                Spring
-              </option>
-              <option key="value2" value="Summer">
-                Summer
-              </option>
-              <option key="value3" value="Autumn">
-                Autumn
-              </option>
-              <option key="value4" value="Winter">
-                Winter
-              </option>
-            </select>
-            <span className={styles.errors}>{!errors.season ? null : <span>{errors.season}</span>}</span>
 
-            <h4>Countries:</h4>
-            <select
-              className={styles.inputsActivity}
-              name="countries "
-              onChange={handleChangeCountry}
-              value={myForm.countries}
-            >
-              <option value="Countries">Countries</option>
-              {totalCountries &&
-                totalCountries.map((e) => (
-                  <option key={e.id}> {e.name}</option>
-                ))}
-            </select>
-            {!errors.countries ? null : <span>{errors.countries}</span>}
+      <h1>Create Activity</h1>
+      <form className={styles.inputs} onSubmit={handleSubmit}>
+        <label className={styles.labelName}>Name:</label>
+        <input
+          className={styles.inputsActivity}
+          key="1"
+          name="name"
+          type="text"
+          placeholder="Name"
+          value={myForm.name}
+          onChange={handleChange}
+        />
+        <span className={styles.errorsName}>
+          {errors.name && <span>{errors.name}</span>}
+        </span>
 
-            {/* <input className='submit' type="submit" value='Create' /> */}
-            <button
-              className="enviar"
-              type="submit"
-              disabled={
-                errors.name ||
-                errors.difficulty ||
-                errors.duration ||
-                errors.season ||
-                errors.countries
-                  ? true
-                  : false
-              }
-            >
-              Submit
-            </button>
-          </form>
-        </div>
-        <div className={styles.addRemove}>
+        <label className={styles.labelDifficulty}>
+          Difficulty: {myForm.difficulty}
+        </label>
+        <input
+          className={styles.inputsActivity}
+          key="2"
+          name="difficulty"
+          type="range"
+          min="0"
+          max="5"
+          value={myForm.difficulty}
+          placeholder="Difficulty"
+          onChange={handleChange}
+        ></input>
+        <span className={styles.errorsDifficulty}>
+          {!errors.difficulty ? null : <span>{errors.difficulty}</span>}
+        </span>
+        <label className={styles.labelDuration}>Duration:</label>
+        <input
+          className={styles.inputsActivity}
+          key="3"
+          name="duration"
+          type="time"
+          value={myForm.duration}
+          placeholder="Duration"
+          onChange={handleChange}
+        />
+        <span className={styles.errorsDuration}>
+          {!errors.duration ? null : <span>{errors.duration}</span>}
+        </span>
+        <label className={styles.labelSeason}>Season:</label>
+        <select
+          className={styles.inputsActivity}
+          key="4"
+          name="season"
+          onChange={handleChange}
+          value={myForm.season}
+        >
+          <option key="defaultValue" value="Season">
+            Season
+          </option>
+          <option key="value1" value="Spring">
+            Spring
+          </option>
+          <option key="value2" value="Summer">
+            Summer
+          </option>
+          <option key="value3" value="Autumn">
+            Autumn
+          </option>
+          <option key="value4" value="Winter">
+            Winter
+          </option>
+        </select>
+        <span className={styles.errorsSeason}>
+          {!errors.season ? null : <span>{errors.season}</span>}
+        </span>
+
+        <label className={styles.labelCountries}>Countries:</label>
+        <select
+          className={styles.inputsActivity}
+          name="countries"
+          // multiple={true}
+          onChange={handleChangeCountry}
+          value={myForm.countries}
+        >
+          <option value="Countries">Countries</option>
+          {totalCountries &&
+            totalCountries.map((e) => <option key={e.id}> {e.name}</option>)}
+        </select>
+        <span className={styles.errorsCountry}>
+          {!errors.countries ? null : <span>{errors.countries}</span>}
+        </span>
+
+        {/* <input className='submit' type="submit" value='Create' /> */}
+        <button
+          className={styles.submitBtn}
+          type="submit"
+          disabled={
+            errors.name ||
+            errors.difficulty ||
+            errors.duration ||
+            errors.season ||
+            errors.countries
+              ? true
+              : false
+          }
+        >
+          Submit
+        </button>
+
+        <div className={styles.nameCountry}>
           {myForm.countries?.map((e) => {
             return (
-              <div key={e} className={styles.nameCountry}>
-                <h3 key={e} className="nombre">
+              <div key={e} className={styles.orderCountry}>
+                <h3 key={e} className={styles.borderCountry}>
                   {e}
                 </h3>
-                <button onClick={() => removeCountry(e)} className="botoncito">
+                <button
+                  onClick={() => removeCountry(e)}
+                  className={styles.removeBtn}
+                >
                   x
                 </button>
               </div>
             );
           })}
         </div>
-      </div>
+      </form>
     </div>
   );
 };

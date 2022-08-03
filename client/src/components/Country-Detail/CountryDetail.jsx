@@ -12,9 +12,11 @@ const CountryDetail = (props) => {
 
   useEffect(() => {
     dispatch(getCountriesDetail(idCountry));
-  }, [dispatch, idCountry]);
+    console.log('me estoy mostrando');
+  }, [idCountry]); 
+  //modify to see changes
 
-  console.log(countryDetail, "COUNTRY DETAIL");
+  // console.log(countryDetail, "COUNTRY DETAIL");
 
   return (
     <div className={styles.mainContainer}>

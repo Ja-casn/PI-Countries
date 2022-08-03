@@ -37,7 +37,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(getAllCountries());
   }, [dispatch]);
-  // Sirve para traerme del estado los paises del componente cuando se monta
+  // Sirve para traerme del componente el estado global de los paises
 
   const handleReload = (e) => {
     e.preventDefault();

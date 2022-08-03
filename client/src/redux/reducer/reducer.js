@@ -1,7 +1,7 @@
 // importing action types
 
 
-import { GET_COUNTRIES_DETAIL, CREATE_ACTIVITY, GET_ALLCOUNTRIES, GET_CONTINENT, GET_COUNTRY_QUERY, FILTER_ACTIVITY, ORDER_BY_NAME, ORDER_BY_POPULATION, GET_ACTIVITIES } from "../../react/actions-types/actionsTypes";
+import { GET_COUNTRIES_DETAIL, GET_ALLCOUNTRIES, GET_CONTINENT, GET_COUNTRY_QUERY, FILTER_ACTIVITY, ORDER_BY_NAME, ORDER_BY_POPULATION, GET_ACTIVITIES } from "../../react/actions-types/actionsTypes";
 
 const initialState = {
     countries: [],
@@ -72,11 +72,7 @@ const mainReducer = (state = initialState, action) => {
                 ...state,
                 countries: orderByPopulation
             }
-        case CREATE_ACTIVITY:
-            return {
-                ...state,
-                activityDetail: action.payload
-            }
+
         case GET_ACTIVITIES:
             return {
                 ...state,

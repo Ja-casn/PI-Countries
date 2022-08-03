@@ -8,22 +8,13 @@ import {
 } from "../../react/actions/actions";
 
 const AllActivities = () => {
-  const totalCountries = useSelector((state) => state.countries);
-
-  let valueActivity = [];
-
-  totalCountries.map(
-    (data) =>
-      data.touristActivities?.map(
-        (activity) => activity.name && valueActivity.push(activity.name) //aca pusheo todas las actividades
-      )
-  );
-
-
-  let uniqueAct = new Set(valueActivity)
-  let setToArray = [...uniqueAct]
-
+  const totalActivities = useSelector((state) => state.activities);
   const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    dispatch(getAllActivities())
+  }, [dispatch])
 
   const handleOnChange = (e) => {
     e.preventDefault();
@@ -37,10 +28,10 @@ const AllActivities = () => {
     <div>
       <select className={styles.filter} onChange={(e) => handleOnChange(e)}>
         <option value="All">All activities</option>
-        {setToArray.map((act, i) => {
+        {totalActivities.map((act, i) => {
           return (
             <option value={act.name} key={i}>
-              {act}
+              {act.name}
             </option>
           );
         })}

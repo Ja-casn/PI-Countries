@@ -69,8 +69,9 @@ export const getAllActivities = () => async (dispatch) => {
 }
 
 export const postActivity = (values) => async (dispatch) => {
-    try {
+    // try {
      const response = await axios.post(`${LOCALHOST}/activities`, values)  
-     dispatch({type: CREATE_ACTIVITY, payload: response.data}) 
-    } catch (error) {}
+     return response
+    //  dispatch({type: CREATE_ACTIVITY, payload: response.data}) 
+    // } catch (error) {}
 }

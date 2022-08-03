@@ -21,12 +21,14 @@ const AllActivities = () => {
       )
   );
 
-  // console.log(valueActivity);
+  
+  let uniqueAct = new Set(valueActivity)
+  let setToArray = [...uniqueAct]
 
-  let uniqueAct = valueActivity.filter(function (act, index, array) {
-    //aca los creo sin repetidos
-    return array.indexOf(act) === index;
-  });
+  // let uniqueAct = valueActivity.filter(function (act, index, array) {
+  //   //aca los creo sin repetidos
+  //   return array.indexOf(act) === index;
+  // });
 
 
   const dispatch = useDispatch();
@@ -45,7 +47,7 @@ const AllActivities = () => {
     <div>
       <select className={styles.filter} onChange={(e) => handleOnChange(e)}>
         <option value="All">All activities</option>
-        {uniqueAct.map((act, i) => {
+        {setToArray.map((act, i) => {
           return (
             <option value={act.name} key={i}>
               {act}

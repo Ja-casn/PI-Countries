@@ -28,11 +28,6 @@ export const getContinent = (optionContinent) => {
         type: GET_CONTINENT, payload: optionContinent
     })
 }
-// export function getContinent(optionContinent) {
-//     return ({
-//         type: GET_CONTINENT, payload: optionContinent
-//     })
-// }
 
 export const orderByName = (payload) => {
     return {

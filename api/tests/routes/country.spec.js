@@ -6,19 +6,37 @@ const { Country, conn } = require('../../src/db.js');
 
 const agent = session(app);
 const country = {
-  name: 'Argentina',
+  id: "VEN",
+  name: "Venezuela",
+  flag: "https://flagcdn.com/ve.svg",
+  continent: "South America",
+  capital: "Caracas",
+  subregion: "South America",
+  area: 916445,
+  population: 28435943,
 };
 
 describe('Country routes', () => {
   before(() => conn.authenticate()
-  .catch((err) => {
-    console.error('Unable to connect to the database:', err);
-  }));
+    .catch((err) => {
+      console.error('Unable to connect to the database:', err);
+    }));
   beforeEach(() => Country.sync({ force: true })
-    .then(() => Country.create(pokemon)));
+    .then(() => Country.create(country)));
   describe('GET /countries', () => {
     it('should get 200', () =>
       agent.get('/countries').expect(200)
     );
   });
+  describe('GET /countries?name=Venezuela', () => {
+    it('should get 200', () =>
+      agent.get('/countries?name=Venezuela').expect(200)
+    );
+  });
+  describe('GET /countries?name=unknown', () => {
+    it('should get 404', () =>
+      agent.get('/countries?name=unknown').expect(404)
+    );
+  });
 });
+

@@ -15,20 +15,30 @@ router.post('/', async (req, res, next) => {
     let { name, difficulty, duration, season, countries } = req.body;
     const newActivity = { name, difficulty, duration, season };
 
-    // si el nombre existe ya en TouristActivity, entonces, guardame el nombre en una constante, y luego al momento de crear una nueva actividad le voy a pasar como name, dicha constante.
-
-    /* Checking if the fields are empty. */
-    if (!name || !difficulty || !duration || !season) {
-        return res.status(404).send('faltan campos por completar');
-    }
-
     try {
-        const createActivity = await TouristActivity.create(newActivity)
-
-        let bringCountry = await Country.findAll({ where: { name: countries } })
-
-        createActivity.addCountry(bringCountry)
-        return res.status(201).send('You have create a new activity')
+        const validAct = await TouristActivity.findOne({
+            where: {
+                name: name
+            }
+        })
+        if (!validAct) {
+            const createActivity = await TouristActivity.create(newActivity)
+            let matchCountry = await Country.findAll({
+                where: {
+                    name: countries
+                }
+            })
+            await createActivity.addCountry(matchCountry)
+            res.status(200).send('Your activity has created')
+        } else {
+            let matchCountry2 = await Country.findAll({
+                where: {
+                    name: countries
+                }
+            })
+            await validAct.addCountry(matchCountry2)
+            res.status(200).send('Your activity has created')
+        }
 
     } catch (error) {
         next(error)

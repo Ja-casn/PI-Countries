@@ -63,38 +63,30 @@ const mainReducer = (state = initialState, action) => {
             }
         case ORDER_BY_POPULATION:
             const orderByPopulation = action.payload === 'asc' ? state.countries.sort((a, b) => {
-                if (a.population < b.population) return -1
-                if (a.population > b.population) return 1
-                return 0
+                return b.population - a.population
             })
                 : state.countries.sort((a, b) => {
-                    if (a.population < b.population) return 1
-                    if (a.population > b.population) return -1
-                    return 0
+                   return a.population - b.population
                 })
             return {
                 ...state,
                 countries: orderByPopulation
             }
-
         case CREATE_ACTIVITY:
             return {
                 ...state,
                 activityDetail: action.payload
             }
-
         case GET_ACTIVITIES:
             return {
                 ...state,
                 activities: action.payload
             }
-
         case FILTER_ACTIVITY:
             return {
                 ...state,
                 countries: action.payload
             }
-
         default:
             return state
     }

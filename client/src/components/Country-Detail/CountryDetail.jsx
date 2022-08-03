@@ -15,16 +15,18 @@ const CountryDetail = (props) => {
   }, [dispatch, idCountry]);
 
   console.log(countryDetail, "COUNTRY DETAIL");
-  // console.log(countryDetail.touristActivities, 'fucking country detail');
 
   return (
     <div className={styles.mainContainer}>
+
       <button
         className={styles.btnReload}
         onClick={() => props.history.goBack()}
       >
         Back to countries
       </button>
+
+
       <div className={styles.flagContainer}>
         <h2>{countryDetail.name}</h2>
         <img className={styles.img} src={countryDetail.flag} alt="No img" />
@@ -34,9 +36,9 @@ const CountryDetail = (props) => {
           {countryDetail.touristActivities?.length === 0 ? (
             <h3>Has no activities</h3>
           ) : (
-            countryDetail.touristActivities?.map((e) => {
+            countryDetail.touristActivities?.map((e, i) => {
               return (
-                <div className={styles.actContainer}>
+                <div className={styles.actContainer} key={i}>
                   <span>
                     <h4>Name: {e.name}</h4>
                   </span>

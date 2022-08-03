@@ -81,7 +81,7 @@ const CreateActivity = () => {
             [ev.target.name]: ev.target.value,
           })
         );
-        console.log(errors);
+        // console.log(errors);
       }
     }
   };
@@ -216,7 +216,6 @@ const CreateActivity = () => {
           {!errors.countries ? null : <span>{errors.countries}</span>}
         </span>
 
-        {/* <input className='submit' type="submit" value='Create' /> */}
         <button
           className={styles.submitBtn}
           type="submit"

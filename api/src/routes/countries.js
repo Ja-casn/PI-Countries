@@ -6,9 +6,6 @@ const router = Router();
 
 router.get('/', async (req, res, next) => {
     const { name } = req.query;
-    // const allCountries = await Country.findAll({include: TouristActivity});
-    // const allCountries = await getAllCountries();
-    // console.log(name)
 
     try {
         if (!name) { // /countries?name= 
@@ -17,14 +14,11 @@ router.get('/', async (req, res, next) => {
             }
             );
             res.send(countryAll);
-            /*
-            Preguntamos si no tiene nombre, de ser asi, creamos una constante donde le asignamos el await para que espere que dicha informacion sea traida y en la tabla Country buscamos todos los paises incluyendonos la actividad
-          */
         } else {  //si llega name por query hacemos esto:
             const countryQuery = await Country.findAll({
                 where: {
                     name: {
-                        [Op.iLike]: `%${name}%` // arg > argentina, ven -> venezia venezuela
+                        [Op.iLike]: `%${name}%`
                     },
                 },
                 include: TouristActivity
@@ -36,7 +30,7 @@ router.get('/', async (req, res, next) => {
                         `there is no country with name ---> ${name}`,
                     );
             }
-            return res.send(countryQuery);
+            return res.status(200).send(countryQuery);
         }
     } catch (error) {
         next(error);

@@ -101,9 +101,9 @@ const Home = () => {
           className={styles.filter}
           onChange={(e) => handleSortPopulation(e)}
         >
-          <option value="all">Poblacion</option>
-          <option value="asc">Population A-Z</option>
-          <option value="desc">Population Z-A</option>
+          <option value="all">Population</option>
+          <option value="asc">Higher Population</option>
+          <option value="desc">Lower Population</option>
         </select>
 
         <Continent />
@@ -131,7 +131,7 @@ const Home = () => {
         countriesPerPage={countriesPerPage}
         countries={countries.length}
         paginated={paginated}
-        currentPage={currentPage}
+        currentPage={currentPage} 
         setCurrentPage={setCurrentPage}
       />
     </div>

@@ -6,9 +6,9 @@ import btn from "../Home/Home.module.css"
 const LandingPage = () => {
   return (
     <div className={styles.landingDiv}>
-      <span className={styles.pTitle}>
+      <div className={styles.pTitle}>
         "The world is a book, and those who do not travel read only a page."
-      </span>
+      </div>
       <button className={btn.btnReload}>
         <Link to="/countries">
           <span className={styles.content}>Explore the countries</span>

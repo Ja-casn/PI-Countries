@@ -25,7 +25,7 @@
 .inputsActivity {
     cursor: pointer;
     will-change: box-shadow, transform;
-    background: radial-gradient(100% 100% at 100% 0%, #303638 0%, #0c1136 100%);
+    background: radial-gradient(100% 100% at 100% 0%, #303638 0%, #0c113689 100%);
     box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
     border-radius: 6px;
     color: #fff;
@@ -115,7 +115,11 @@
 .submitBtn{
     position: absolute;
     margin-left: 270px;
-    margin-top: 320px;
+    margin-top: 315px;
+    color: white;
+    background: radial-gradient(100% 100% at 100% 0%, #303638 0%, #0c113689 100%);
+    border-radius: 6px;
+    height: 30px;
 }
 /* ---------------------------------------------------------------------- */
 

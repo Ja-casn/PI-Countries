@@ -46,10 +46,6 @@ router.post('/', async (req, res, next) => {
 
 
 })
-// si el usuario escribe la palabra correr y esa actividad ya existe, si no hago validacion al momento de traerme el get con todas las actividades, me voy a traer corre correr 100 veces.
+
 
 module.exports = router;
-
-// [ ] POST /activities:
-// Recibe los datos recolectados desde el formulario controlado de la ruta de creación de actividad turística por body
-// Crea una actividad turística en la base de datos, relacionada con los países correspondientes

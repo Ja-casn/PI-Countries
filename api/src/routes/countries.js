@@ -37,39 +37,6 @@ router.get('/', async (req, res, next) => {
     }
 })
 
-// router.get('/', (req, res, next) => {
-//     const { name } = req.query;
-
-//     if (!name) { // /countries?name= 
-//         Country.findAll({ include: TouristActivity })
-//             .then((countryAll) => {
-//                 res.send(countryAll);
-//             })
-//             .catch((e) => next(e))
-
-//     } else {  //si llega name por query hacemos esto:
-//         Country.findAll({
-//             where: {
-//                 name: {
-//                     [Op.iLike]: `%${name}%` // arg > argentina, ven -> venezia venezuela
-//                 },
-//             },
-//             include: TouristActivity
-//         })
-//             .then((countryQuery) => {
-//                 if (countryQuery.length === 0) {
-//                     return res
-//                         .status(404)
-//                         .send({
-//                             error: `there is no country with name , ${name}`,
-//                         });
-//                 } else {
-//                     return res.send(countryQuery);
-//                 }
-//             })
-//             .catch((e) => next(e))
-//     }
-// })
 
 router.get('/:idCountry', async (req, res, next) => { // /countries/:idCountry
     const { idCountry } = req.params;

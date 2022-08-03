@@ -7,8 +7,6 @@ import {
   getAllCountries,
 } from "../../react/actions/actions";
 
-
-
 const AllActivities = () => {
   const totalCountries = useSelector((state) => state.countries);
 
@@ -21,15 +19,9 @@ const AllActivities = () => {
       )
   );
 
-  
+
   let uniqueAct = new Set(valueActivity)
   let setToArray = [...uniqueAct]
-
-  // let uniqueAct = valueActivity.filter(function (act, index, array) {
-  //   //aca los creo sin repetidos
-  //   return array.indexOf(act) === index;
-  // });
-
 
   const dispatch = useDispatch();
 
@@ -40,8 +32,6 @@ const AllActivities = () => {
     }
     dispatch(filterByActivity(e.target.value));
   };
-
-
 
   return (
     <div>

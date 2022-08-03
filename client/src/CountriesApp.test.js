@@ -12,3 +12,5 @@ test('renders text of the button', () => {
   const linkElement = screen.getByText(/Explore the countries/i);
   expect(linkElement).toBeInTheDocument();
 });
+
+

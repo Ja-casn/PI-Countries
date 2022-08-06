@@ -25,9 +25,9 @@ const getInfoApi = require('./src/controllers/apiCountryInfo')
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
 
-  server.listen(3001, () => {
+  server.listen(process.env.PORT, () => {
     getInfoApi()
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+    console.log(`listening on port ${process.env.PORT}`); // eslint-disable-line no-console
   });
 
 })

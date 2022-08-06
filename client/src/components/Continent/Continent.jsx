@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { getContinent } from "../../react/actions/actions";
 import styles from '../Home/Home.module.css'
 

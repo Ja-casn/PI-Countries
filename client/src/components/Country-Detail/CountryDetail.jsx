@@ -12,8 +12,8 @@ const CountryDetail = (props) => {
 
   useEffect(() => {
     dispatch(getCountriesDetail(idCountry));
-    console.log('me estoy mostrando');
-  }, [idCountry]); 
+    // console.log('me estoy mostrando');
+  }, [dispatch, idCountry]); 
   //modify to see changes
 
   // console.log(countryDetail, "COUNTRY DETAIL");
@@ -34,10 +34,12 @@ const CountryDetail = (props) => {
         <img className={styles.img} src={countryDetail.flag} alt="No img" />
 
         <h3>Activities:</h3>
+
         <div className={styles.activityDetail}>
           {countryDetail.touristActivities?.length === 0 ? (
             <h3>Has no activities</h3>
           ) : (
+            
             countryDetail.touristActivities?.map((e, i) => {
               return (
                 <div className={styles.actContainer} key={i}>
@@ -65,6 +67,7 @@ const CountryDetail = (props) => {
           <h4>Capital: {countryDetail.capital}</h4>
           <h4>Area: {countryDetail.area} Km2.</h4>
           <h4>Population: {countryDetail.population} Hab</h4>
+          <h4>Codecountry: +{countryDetail.codecountry}</h4>
         </div>
       </div>
     </div>

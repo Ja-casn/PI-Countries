@@ -1,14 +1,39 @@
-.landingDiv {
+.mainContainerDiv{
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    background-image: url('../../utilities/img/worldCountries.png');
-    background-position: 25% 25%;
-    width: 100%;
-    height: 100vh;
+    margin-top: 350px;
+    /* border: 1px solid greenyellow; */
 }
 
+.btnReload{
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    will-change: box-shadow, transform;
+    background: radial-gradient(100% 100% at 100% 0%, #303638 0%, #0c113689 100%);
+    box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
+    padding: 0 15px;
+    border-radius: 6px;
+    color: #fff;
+    height: 48px;
+    font-size: 15px;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.btnReload:hover {
+    box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #bebfc9;
+    transform: translateY(-2px);
+}
+
+.btnReload:active {
+    box-shadow: inset 0px 3px 7px #3c4fe0;
+    transform: translateY(2px);
+}
+
+.insideDiv{
+    align-items: center;
+    text-align: center;
+}
 
 .pTitle {
     color: #1f2c3a;
@@ -17,7 +42,7 @@
 }
 
 .content{
-    margin-top: 9px;
     color:white;
     font-size: 25px;
+    margin-top: 9px;
 }

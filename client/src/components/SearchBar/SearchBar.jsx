@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { getCountryQuery } from "../../react/actions/actions";
 import styles from "./searchBar.module.css";
 
-const SearchBar = ({ setCurrentPage }) => {
+const SearchBar = ({setCurrentPage}) => {
   const dispatch = useDispatch();
   const [countryName, setCountryName] = useState("");
 
@@ -15,8 +15,7 @@ const SearchBar = ({ setCurrentPage }) => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     dispatch(getCountryQuery(countryName));
-    setCurrentPage(1);
-    setCountryName("");
+    setCurrentPage(1)
   };
 
   return (
@@ -35,11 +34,7 @@ const SearchBar = ({ setCurrentPage }) => {
         />
 
         <button
-          style={{
-            color: "white",
-            backgroundImage: "linear-gradient(to right, #303638 0%, #0c113689)",
-            borderRadius: "10px",
-          }}
+          className={styles.btnSubmit}
           type="submit"
           onClick={(e) => handleOnSubmit(e)}
           disabled={!countryName || /\s/g.test(countryName) ? true : false}

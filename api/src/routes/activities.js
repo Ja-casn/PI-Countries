@@ -11,6 +11,7 @@ router.get('/', async (req, res, next) => {
 
 })
 
+
 router.post('/', async (req, res, next) => {
     let { name, difficulty, duration, season, countries } = req.body;
     const newActivity = { name, difficulty, duration, season };
@@ -43,10 +44,7 @@ router.post('/', async (req, res, next) => {
     } catch (error) {
         next(error)
     }
-
-
 })
-
 
 
 module.exports = router;

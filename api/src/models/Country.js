@@ -36,6 +36,10 @@ module.exports = (sequelize) => {
     population: {
       type: DataTypes.BIGINT,
       allowNull: true
+    },
+    codecountry:{
+      type: DataTypes.INTEGER,
+      defaultValue: 0
     }
   }, {
     timestamps: false

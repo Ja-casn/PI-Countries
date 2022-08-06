@@ -10,9 +10,11 @@ const CountryCard = ({ flag, name, continent, id }) => {
         <div className={styles.imgCountry}>
           <img src={flag} alt={id} />
         </div>
-        <span className={styles.pagraph}>
+        <span className={styles.pName}>
           <p>{name}</p>
-          <p>{continent}</p>
+        </span>
+        <span className={styles.pContinent}>
+        <p>{continent}</p>
         </span>
       </Link>
     </div>

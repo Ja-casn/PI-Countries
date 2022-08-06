@@ -1,5 +1,4 @@
 .countryCard {
-    display: flexbox;
     margin: 20px;
     width: 220px;
     height: 250px;
@@ -30,6 +29,6 @@
     margin-top: 10px;
 }
 
-.pagraph {
+.pName, .pContinent{
     color: white;
 }

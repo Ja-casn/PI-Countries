@@ -1,42 +1,76 @@
 .container{
-    background-image: url('../../utilities/img/worldCountries.png');
-    background-size: cover;
-    overflow-y: hidden;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
     height: 100vh;
+    /* width: 100%; */
 }
 
 .cardDesign {
-    display: inline-flex;
-    justify-content: center;
-    text-align: center;
+    display: flex;
     flex-wrap: wrap;
-    padding-top: 10px;
-    
+    justify-content: center;
+    flex-direction: row;
+    text-align: center;
+    height: 100vh;
+    /* border: 1px solid white; */
 }
-
 
 .ordFilter{
     display: flex;
     justify-content: center;
+    margin-top: 60px;
+    /* border: 1px solid white; */
 }
 
-.btnReload{
-    display: inline-block;
+/* ------------------------------------------------------------------------------------------ */
+.filter {
+    text-align: center;
     outline: 0;
     border: 0;
     cursor: pointer;
     will-change: box-shadow, transform;
     background: radial-gradient(100% 100% at 100% 0%, #303638 0%, #0c113689 100%);
     box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
-    padding: 0 32px;
+    padding: 0 22px;
     border-radius: 6px;
     color: #fff;
     height: 48px;
     font-size: 15px;
-    text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
     transition: box-shadow 0.15s ease, transform 0.15s ease;
     margin: 5px 10px 0px 10px;
+    /* border: 1px solid greenyellow; */
+
+
+}
+
+.filter:hover,.btnCreateAct:hover {
+    box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #bebfc9;
+    transform: translateY(-2px);
+}
+
+.filter:active {
+    box-shadow: inset 0px 3px 7px #3c4fe0;
+    transform: translateY(2px);
+}
+
+/* ------------------------------------------------------------------------------------------ */
+
+.btnReload{
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 200px;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    will-change: box-shadow, transform;
+    background: radial-gradient(100% 100% at 100% 0%, #303638 0%, #0c113689 100%);
+    box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
+    padding: 0 15px;
+    border-radius: 6px;
+    color: #fff;
+    height: 48px;
+    font-size: 15px;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
 .btnReload:hover {
@@ -49,8 +83,12 @@
     transform: translateY(2px);
 }
 
-.filter {
-    display: inline-block;
+/* ------------------------------------------------------------------------------------------ */
+
+.btnCreateAct{
+    position: absolute;
+    margin-left: 1100px;
+    margin-top: 10px;
     outline: 0;
     border: 0;
     cursor: pointer;
@@ -62,25 +100,6 @@
     color: #fff;
     height: 48px;
     font-size: 15px;
-    text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
     transition: box-shadow 0.15s ease, transform 0.15s ease;
-    margin: 0px 10px 0px 10px;
-
-
 }
 
-.filter:hover {
-    box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #bebfc9;
-    transform: translateY(-2px);
-}
-
-.filter:active {
-    box-shadow: inset 0px 3px 7px #3c4fe0;
-    transform: translateY(2px);
-}
-
-.mainButtons{
-    display: flex;
-    justify-content: space-between;
-    margin: 5px 60px 0px 60px;
-}

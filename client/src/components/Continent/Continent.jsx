@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { getContinent } from "../../react/actions/actions";
 import styles from '../Home/Home.module.css'
 
-const Continent = () => {
+const Continent = ({setCurrentPage}) => {
   const dispatch = useDispatch();
 
   const handleClickFilter = (e) => {
     // e.preventDefault();
     dispatch(getContinent(e.target.value));
+    setCurrentPage(1)
   };
 
   return (

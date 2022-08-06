@@ -18,11 +18,13 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [countriesPerPage,] = useState(10);
+  const [countriesPerPage] = useState(10);
   const indexOfLastCountry =
     currentPage === 1 ? 9 : currentPage * countriesPerPage - 1; // 10
+
   const indexOfFirstCountry =
     currentPage === 1 ? 0 : indexOfLastCountry - countriesPerPage; // 0
+
   const currentCountry = countries.slice(
     indexOfFirstCountry,
     indexOfLastCountry
@@ -36,6 +38,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getAllCountries());
+    // console.log('im apprearing many times');
   }, [dispatch]);
   // Sirve para traerme del componente el estado global de los paises
 
@@ -73,7 +76,7 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.mainButtons}>
+      <div>
         <button
           className={styles.btnReload}
           onClick={(e) => {
@@ -82,8 +85,11 @@ const Home = () => {
         >
           Reload countries
         </button>
+      </div>
+
+      <div>
         <Link to="/activities">
-          <button className={styles.btnReload}>Create Activity</button>
+          <button className={styles.btnCreateAct}>Create Activity</button>
         </Link>
       </div>
 
@@ -116,14 +122,13 @@ const Home = () => {
       <div className={styles.cardDesign}>
         {currentCountry.map((el) => {
           return (
-            <CountryCard
-              // className={styles.cardDesign}
-              key={el.id}
-              id={el.id}
-              flag={el.flag}
-              name={el.name}
-              continent={el.continent}
-            />
+              <CountryCard
+                key={el.id}
+                id={el.id}
+                flag={el.flag}
+                name={el.name}
+                continent={el.continent}
+              />
           );
         })}
       </div>
@@ -131,7 +136,7 @@ const Home = () => {
         countriesPerPage={countriesPerPage}
         countries={countries.length}
         paginated={paginated}
-        currentPage={currentPage} 
+        currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
     </div>

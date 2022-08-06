@@ -3,17 +3,17 @@
     justify-content: center;
     text-align: center;
     height: 30px;
-    border-radius: 4000px;
 }
 
 .formSearchBar{
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 8px;
+    min-width: 400px;
+    /* border: 1px solid greenyellow; */
 }
 
 .searchBar {
-    display: inline-block;
     outline: 0;
     border: 0;
     will-change: box-shadow, transform;
@@ -24,7 +24,7 @@
     height: 48px;
     font-size: 15px;
     transition: box-shadow 0.15s ease, transform 0.15s ease;
-    margin: 0px 5px 0px 0px;
+    margin: 0px 5px;
     color: white;
 }
 
@@ -38,3 +38,11 @@
     transform: translateY(2px);
 }
 
+
+.btnSubmit{
+    color: white;
+    background: linear-gradient(to right, #303638 0%, #0c113689);
+    border-radius: 10px;
+    height: 48px;
+    
+  }

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './pagination.module.css'
 
-export default function Pagination({currentPage, setCurrentPage, countriesPerPage, countries, paginated }) {
+export default function Pagination({currentPage, setCurrentPage, countriesPerPage, countries, paginated}) {
   let pageNumber = [];
 
   let maxPages = 1 + Math.ceil((countries - 9) / countriesPerPage)
@@ -17,6 +17,8 @@ export default function Pagination({currentPage, setCurrentPage, countriesPerPag
   const nextClick = () => {
     setCurrentPage(currentPage + 1)
   }
+
+
   return (
       <div className={styles.paginated}>
         <button className={styles.movesBtn} disabled={currentPage <= 1} onClick={prevClick} >Prev</button>

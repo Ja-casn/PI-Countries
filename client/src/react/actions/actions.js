@@ -1,4 +1,4 @@
-import { GET_COUNTRIES_DETAIL, GET_ACTIVITIES, GET_ALLCOUNTRIES, GET_CONTINENT, GET_COUNTRY_QUERY, LOCALHOST, FILTER_ACTIVITY, ORDER_BY_NAME, ORDER_BY_POPULATION, CREATE_ACTIVITY } from '../actions-types/actionsTypes';
+import { GET_COUNTRIES_DETAIL, GET_ACTIVITIES, GET_ALLCOUNTRIES, GET_CONTINENT, GET_COUNTRY_QUERY, LOCALHOST, FILTER_ACTIVITY, ORDER_BY_NAME, ORDER_BY_POPULATION } from '../actions-types/actionsTypes';
 import axios from 'axios';
 
 export const getAllCountries = () => async (dispatch) => {
@@ -11,7 +11,7 @@ export const getCountryQuery = (name) => async (dispatch) => {
         const response = await axios.get(`${LOCALHOST}/countries?name=${name}`)
         dispatch({ type: GET_COUNTRY_QUERY, payload: response.data })
     } catch (error) {
-        if(error.response){
+        if (error.response) {
             alert(error.response.data)
         }
     }
@@ -23,9 +23,10 @@ export const getCountriesDetail = (idCountry) => async (dispatch) => {
 
 }
 // NO ES ASYNC PORQUE NO TIENE QUE ESPERAR NINGUNA RESPUESTA AL BACK
-export const getContinent = (optionContinent) => {
+export const getContinent = (payload) => {
     return ({
-        type: GET_CONTINENT, payload: optionContinent
+        type: GET_CONTINENT, 
+        payload
     })
 }
 
@@ -55,7 +56,7 @@ export const filterByActivity = (payload) => async (dispatch) => {
     const response2 = await response.data.filter((e) => (
         e.touristActivities.filter((el) => el.name === payload).length
     )
-    )
+)
 
     console.log(response2)
     dispatch({ type: FILTER_ACTIVITY, payload: response2 })
@@ -68,10 +69,9 @@ export const getAllActivities = () => async (dispatch) => {
     dispatch({ type: GET_ACTIVITIES, payload: response.data })
 }
 
-export const postActivity = (values) => async (dispatch) => {
-    // try {
-     const response = await axios.post(`${LOCALHOST}/activities`, values)  
-     return response
-    //  dispatch({type: CREATE_ACTIVITY, payload: response.data}) 
-    // } catch (error) {}
+export const postActivity = (values) => async () => {
+
+    const response = await axios.post(`${LOCALHOST}/activities`, values)
+    return response
+
 }

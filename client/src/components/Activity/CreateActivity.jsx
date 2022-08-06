@@ -40,10 +40,10 @@ const CreateActivity = () => {
   const totalCountries = useSelector((state) => state.countries);
   const [errors, setErrors] = useState({});
   const [myForm, setMyForm] = useState({
-    name: "",
-    difficulty: "",
-    duration: "",
-    season: "",
+    name: '',
+    difficulty: '',
+    duration: '',
+    season: '',
     countries: [],
   });
 
@@ -126,7 +126,7 @@ const CreateActivity = () => {
         Back to countries
       </button>
 
-      <h1>Create Activity</h1>
+      <h1 className={styles.h1style}>Create Activity</h1>
       <form className={styles.inputs} onSubmit={handleSubmit}>
         <label className={styles.labelName}>Name:</label>
         <input
@@ -203,10 +203,9 @@ const CreateActivity = () => {
         <label className={styles.labelCountries}>Countries:</label>
         <select
           className={styles.inputsActivity}
-          name="countries"
-          // multiple={true}
           onChange={handleChangeCountry}
-          value={myForm.countries}
+          // name="countries"
+          // value={myForm.countries}
         >
           <option value="Countries">Countries</option>
           {totalCountries &&

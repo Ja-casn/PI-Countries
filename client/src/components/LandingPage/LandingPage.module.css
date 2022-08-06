@@ -1,10 +1,49 @@
 .mainContainerDiv{
     display: flex;
     justify-content: center;
-    margin-top: 350px;
+    /* margin-top: 350px; */
+    width: 100%;
+    height: 100vh;
     /* border: 1px solid greenyellow; */
 }
 
+
+/* ----------------------------------------------------------------------------- */
+
+.insideDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 350px;
+}
+
+.pTitle {
+    color: #1f2c3a;
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+
+.content{
+    color:white;
+    font-size: 25px;
+    margin-top: 9px;
+}
+
+.infoP{
+    position: absolute;
+    color: white;
+    margin-top: 360px;
+    margin-left: 1130px;
+    /* justify-content: center; */
+}
+
+.landingIMG{
+    display: flex;
+    margin-left: 85px;
+}
+
+
+/* ----------------------------------------------------------------------------- */
 .btnReload{
     outline: 0;
     border: 0;
@@ -30,19 +69,3 @@
     transform: translateY(2px);
 }
 
-.insideDiv{
-    align-items: center;
-    text-align: center;
-}
-
-.pTitle {
-    color: #1f2c3a;
-    font-size: 45px;
-    margin-bottom: 20px;
-}
-
-.content{
-    color:white;
-    font-size: 25px;
-    margin-top: 9px;
-}

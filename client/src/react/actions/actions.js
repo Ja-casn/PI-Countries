@@ -2,13 +2,13 @@ import { GET_COUNTRIES_DETAIL, GET_ACTIVITIES, GET_ALLCOUNTRIES, GET_CONTINENT, 
 import axios from 'axios';
 
 export const getAllCountries = () => async (dispatch) => {
-    const response = await axios.get(`${LOCALHOST}/countries`)
+    const response = await axios.get(`/countries`)
     dispatch({ type: GET_ALLCOUNTRIES, payload: response.data })
 }
 
 export const getCountryQuery = (name) => async (dispatch) => {
     try {
-        const response = await axios.get(`${LOCALHOST}/countries?name=${name}`)
+        const response = await axios.get(`/countries?name=${name}`)
         dispatch({ type: GET_COUNTRY_QUERY, payload: response.data })
     } catch (error) {
         if (error.response) {
@@ -18,7 +18,7 @@ export const getCountryQuery = (name) => async (dispatch) => {
 }
 
 export const getCountriesDetail = (idCountry) => async (dispatch) => {
-    const response = await axios.get(`http://localhost:3001/countries/${idCountry}`)
+    const response = await axios.get(`/${idCountry}`)
     dispatch({ type: GET_COUNTRIES_DETAIL, payload: response.data })
 
 }
@@ -46,7 +46,7 @@ export const orderByPopulation = (payload) => {
 
 
 export const filterByActivity = (payload) => async (dispatch) => {
-    const response = await axios.get('http://localhost:3001/countries')
+    const response = await axios.get('/countries')
 
     console.log(payload)
 
@@ -65,7 +65,7 @@ export const filterByActivity = (payload) => async (dispatch) => {
 }
 
 export const getAllActivities = () => async (dispatch) => {
-    const response = await axios.get('http://localhost:3001/activities')
+    const response = await axios.get('/activities')
     dispatch({ type: GET_ACTIVITIES, payload: response.data })
 }
 

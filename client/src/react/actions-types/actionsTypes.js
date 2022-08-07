@@ -7,4 +7,3 @@ export const GET_CONTINENT = 'GET_CONTINENT';
 export const ORDER_BY_NAME = 'ORDER_BY_NAME';
 export const ORDER_BY_POPULATION = 'ORDER_BY_POPULATION';
 export const FILTER_ACTIVITY = 'FILTER_ACTIVITY';
-export const LOCALHOST = 'http://localhost:3001';

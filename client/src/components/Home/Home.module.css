@@ -1,25 +1,29 @@
-.container{
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    /* width: 100%; */
-}
-
 .cardDesign {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    flex-direction: row;
     text-align: center;
-    height: 100vh;
-    /* border: 1px solid white; */
+    max-width: 1258px;
+    min-width: 768px;
+    min-height: 900px;
+    /* border: 3px solid greenyellow; */
 }
 
 .ordFilter{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    margin-top: 60px;
+    margin-top: 10px;
+    max-width: 1258px;
     /* border: 1px solid white; */
+}
+
+.searchContainer{
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+    width: 725px;
+    /* border: 1px solid red */
 }
 
 /* ------------------------------------------------------------------------------------------ */
@@ -55,15 +59,12 @@
 
 /* ------------------------------------------------------------------------------------------ */
 
-.btnReload{
-    position: absolute;
-    margin-top: 10px;
-    margin-left: 200px;
+.btnReload, .btnCreateAct{
     outline: 0;
     border: 0;
     cursor: pointer;
     will-change: box-shadow, transform;
-    background: radial-gradient(100% 100% at 100% 0%, #303638 0%, #0c113689 100%);
+    background: radial-gradient(100% 100% at 100% 0%,  #0c113689 0%, #14272e 100%);
     box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
     padding: 0 15px;
     border-radius: 6px;
@@ -71,35 +72,20 @@
     height: 48px;
     font-size: 15px;
     transition: box-shadow 0.15s ease, transform 0.15s ease;
+    width: 135px;
+    /* border: 1px solid greenyellow; */
 }
 
-.btnReload:hover {
+.btnReload:hover, .btnCreateAct:hover {
     box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #bebfc9;
     transform: translateY(-2px);
 }
 
-.btnReload:active {
+.btnReload:active, .btnCreateAct:active {
     box-shadow: inset 0px 3px 7px #3c4fe0;
     transform: translateY(2px);
 }
 
 /* ------------------------------------------------------------------------------------------ */
 
-.btnCreateAct{
-    position: absolute;
-    margin-left: 1100px;
-    margin-top: 10px;
-    outline: 0;
-    border: 0;
-    cursor: pointer;
-    will-change: box-shadow, transform;
-    background: radial-gradient(100% 100% at 100% 0%, #303638 0%, #0c113689 100%);
-    box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
-    padding: 0 26px;
-    border-radius: 6px;
-    color: #fff;
-    height: 48px;
-    font-size: 15px;
-    transition: box-shadow 0.15s ease, transform 0.15s ease;
-}
 

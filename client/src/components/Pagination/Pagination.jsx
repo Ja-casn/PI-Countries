@@ -4,7 +4,7 @@ import styles from './pagination.module.css'
 export default function Pagination({currentPage, setCurrentPage, countriesPerPage, countries, paginated}) {
   let pageNumber = [];
 
-  let maxPages = 1 + Math.ceil((countries - 9) / countriesPerPage)
+  let maxPages = Math.ceil((countries) / countriesPerPage)
 
   for (let i = 1; i <= maxPages; i++) {
     pageNumber.push(i);

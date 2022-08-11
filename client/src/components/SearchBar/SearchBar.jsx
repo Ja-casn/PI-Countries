@@ -20,7 +20,7 @@ const SearchBar = ({setCurrentPage}) => {
 
   return (
     <div>
-      <form className={styles.formSearchBar}>
+      <form>
         <input
           className={styles.searchBar}
           type="text"

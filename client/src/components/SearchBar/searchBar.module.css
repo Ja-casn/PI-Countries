@@ -3,14 +3,7 @@
     justify-content: center;
     text-align: center;
     height: 30px;
-}
-
-.formSearchBar{
-    display: flex;
-    justify-content: center;
-    margin-top: 8px;
-    min-width: 400px;
-    /* border: 1px solid greenyellow; */
+    /* border: 1px solid purple; */
 }
 
 .searchBar {
@@ -24,8 +17,10 @@
     height: 48px;
     font-size: 15px;
     transition: box-shadow 0.15s ease, transform 0.15s ease;
-    margin: 0px 5px;
+    margin: 0px 15px;
+    width: 285px;
     color: white;
+    /* border: 1px solid red */
 }
 
 .searchBar:hover {
@@ -44,5 +39,6 @@
     background: linear-gradient(to right, #303638 0%, #0c113689);
     border-radius: 10px;
     height: 48px;
+    margin-right: 15px;
     
   }

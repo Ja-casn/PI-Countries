@@ -1,7 +1,7 @@
 .countryCard {
-    margin: 20px;
-    width: 220px;
-    height: 250px;
+    margin: 12px 20px 0px 0px;
+    width: 240px;
+    height: 260px;
     border-radius: 6px;
     backdrop-filter: blur(10px);
     outline: 0;

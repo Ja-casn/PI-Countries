@@ -19,11 +19,9 @@ const Home = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [countriesPerPage] = useState(10);
-  const indexOfLastCountry =
-    currentPage === 1 ? 9 : currentPage * countriesPerPage - 1; // 10
+  const indexOfLastCountry = currentPage * countriesPerPage; // 10
 
-  const indexOfFirstCountry =
-    currentPage === 1 ? 0 : indexOfLastCountry - countriesPerPage; // 0
+  const indexOfFirstCountry = indexOfLastCountry - countriesPerPage; // 0
 
   const currentCountry = countries.slice(
     indexOfFirstCountry,
@@ -76,23 +74,6 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
-      <div>
-        <button
-          className={styles.btnReload}
-          onClick={(e) => {
-            handleReload(e);
-          }}
-        >
-          Reload countries
-        </button>
-      </div>
-
-      <div>
-        <Link to="/activities">
-          <button className={styles.btnCreateAct}>Create Activity</button>
-        </Link>
-      </div>
-
       <div className={styles.ordFilter}>
         <select
           className={styles.filter}
@@ -115,20 +96,33 @@ const Home = () => {
         <Continent />
 
         <AllActivities />
-      </div>
+        <div className={styles.searchContainer}>
+          <button
+            className={styles.btnReload}
+            onClick={(e) => {
+              handleReload(e);
+            }}
+          >
+            Reload countries
+          </button>
+          <SearchBar setCurrentPage={setCurrentPage} />
 
-      <SearchBar setCurrentPage={setCurrentPage} />
+          <Link to="/activities">
+            <button className={styles.btnCreateAct}>Create Activity</button>
+          </Link>
+        </div>
+      </div>
 
       <div className={styles.cardDesign}>
         {currentCountry.map((el) => {
           return (
-              <CountryCard
-                key={el.id}
-                id={el.id}
-                flag={el.flag}
-                name={el.name}
-                continent={el.continent}
-              />
+            <CountryCard
+              key={el.id}
+              id={el.id}
+              flag={el.flag}
+              name={el.name}
+              continent={el.continent}
+            />
           );
         })}
       </div>

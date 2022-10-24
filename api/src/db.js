@@ -17,7 +17,7 @@ let sequelize =
         database: DB_NAME,
         dialect: 'postgres',
         host: DB_HOST,
-        port: 6973,
+        port: 7315,
         username: DB_USER,
         password: DB_PASSWORD,
         pool: {
